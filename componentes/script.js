@@ -1,38 +1,26 @@
-// Obtener referencias a los elementos del DOM
-const nombreInput = document.getElementById("nombre");
-const emailInput = document.getElementById("email");
-const contrasenaInput = document.getElementById("contrasena");
-const registroForm = document.querySelector("#registro form");
-const btnCreateComment = document.querySelector(".btnCreate");
-const comentarioInput = document.querySelector("[data-form-input]");
+//import nav from "./nav";
 
-// Manejar el evento de envío del formulario de registro
-registroForm.addEventListener("submit", (evento) => {
-  evento.preventDefault();
 
-  const nombre = nombreInput.value;
-  const email = emailInput.value;
-  const contrasena = contrasenaInput.value;
 
-  // Realizar validación y procesamiento del formulario (por ejemplo, enviar los datos al servidor).
-  // Aquí puedes agregar la lógica para enviar los datos de registro al servidor si es necesario.
+(()=>{
+  
 
-  // Limpia los campos del formulario después del envío
-  nombreInput.value = "";
-  emailInput.value = "";
-  contrasenaInput.value = "";
-});
+    const botonAdd = document.querySelector('[data-form-btn]');
+    const crearTarea = (evento)=>{
+        evento.preventDefault();
+        const inputDataComentario = document.querySelector('[data-form-comentario]')
+        const valorIn = inputDataComentario.value;
+        const boxComentarios = document.querySelector('[data-list-comentarios]') 
 
-// Manejar el evento de clic en el botón "Añadir Comentario"
-btnCreateComment.addEventListener("click", (evento) => {
-  evento.preventDefault();
+        inputDataComentario.value = '';
 
-  const comentario = comentarioInput.value;
+        const label = document.createElement('label');
+        label.innerText = valorIn;
+        label.classList.add('label')
+        
+        boxComentarios.appendChild(label)
+    }
 
-  // Realizar validación y procesamiento del comentario.
-  // Puedes agregar la lógica para mostrar el comentario en la página o enviarlo al servidor.
+    botonAdd.addEventListener('click', crearTarea)
 
-  // Limpia el campo de comentario después de agregarlo
-  comentarioInput.value = "";
-});
-
+})();
